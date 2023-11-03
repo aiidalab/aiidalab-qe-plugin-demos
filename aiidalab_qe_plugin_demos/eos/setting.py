@@ -18,10 +18,6 @@ class Setting(Panel):
             Please set the value of scale and number of points.
             </div>"""
         )
-        self.workchain_protocol = ipw.ToggleButtons(
-            options=["fast", "moderate", "precise"],
-            value="moderate",
-        )
         self.scale = ipw.FloatText(
             value=0.05,
             description="Scale:",
@@ -54,3 +50,8 @@ class Setting(Panel):
         """Set a dictionary with the input parameters for the plugin."""
         self.scale.value = input_dict.get("scale", 0.05)
         self.npoint.value = input_dict.get("npoint", 5)
+
+    def reset(self):
+        """Reset the input fields."""
+        self.scale.value = 0.05
+        self.npoint.value = 5
