@@ -3,18 +3,16 @@
 
 import ase
 import ipywidgets as ipw
-import numpy as np
-import spglib
 import traitlets as tl
 from aiidalab_widgets_base.utils import StatusHTML
 from aiidalab_widgets_base.structures import _register_structure
 
-class StructureEditor(ipw.VBox):
+class SurfaceEditor(ipw.VBox):
     """Widget that allows for cut surface slab."""
 
     structure = tl.Instance(ase.Atoms, allow_none=True)
 
-    def __init__(self, title="EOS editor"):
+    def __init__(self, title="Surface editor"):
         self.title = title
         self._status_message = StatusHTML()
 

@@ -7,7 +7,6 @@ from aiidalab_qe.common.panel import Panel
 class Setting(Panel):
 
     title = "EOS Settings"
-    identifier = "eos"
 
     def __init__(self, **kwargs):
         self.settings_title = ipw.HTML(
@@ -19,19 +18,15 @@ class Setting(Panel):
             Please set the value of scale and number of points.
             </div>"""
         )
-        self.workchain_protocol = ipw.ToggleButtons(
-            options=["fast", "moderate", "precise"],
-            value="moderate",
-        )
         self.scale = ipw.FloatText(
             value=0.05,
-            description="Value of scale:",
+            description="Scale:",
             disabled=False,
             style={"description_width": "initial"},
         )
         self.npoint = ipw.IntText(
             value=5,
-            description="Value of npoint:",
+            description="Npoint:",
             disabled=False,
             style={"description_width": "initial"},
         )
@@ -53,5 +48,10 @@ class Setting(Panel):
 
     def set_panel_value(self, input_dict):
         """Set a dictionary with the input parameters for the plugin."""
-        self.scale.value = input_dict.get("scale", 1)
-        self.npoint.value = input_dict.get("npoint", 2)
+        self.scale.value = input_dict.get("scale", 0.05)
+        self.npoint.value = input_dict.get("npoint", 5)
+
+    def reset(self):
+        """Reset the input fields."""
+        self.scale.value = 0.05
+        self.npoint.value = 5

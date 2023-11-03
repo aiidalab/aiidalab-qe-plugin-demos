@@ -9,7 +9,7 @@ README = (HERE / "README.md").read_text()
 
 
 setup(
-    name="aiidalab-qe-eos-demo",
+    name="aiidalab-qe-eos",
     version="0.0.1",
     description="A aiidalab-qe plugin to calculate the equation of state of a crystal.",
     long_description=README,
@@ -21,7 +21,8 @@ setup(
     packages=find_packages(),
     entry_points={
         "aiidalab_qe.properties": [
-            "eos = aiidalab_qe_eos:eos",
+            "eos = aiidalab_qe_plugin_demos.eos:eos",
+            "surface = aiidalab_qe_plugin_demos.surface:surface",
         ],
     },
     install_requires=[
